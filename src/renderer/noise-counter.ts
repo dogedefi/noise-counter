@@ -1,21 +1,30 @@
 import { scheduleJob } from 'node-schedule';
 import Logger from 'electron-log';
+import fileUrl from 'file-url';
+import path from 'path';
+import os from 'os';
 
 export const logger = Logger.scope('noise-counter');
 
 export default (infinity?: boolean) => {
   const noiseA = new Audio();
-  noiseA.src = 'file:///Users/mac/Developer/noise-counter/assets/noise-a.mp3';
+  noiseA.src = fileUrl(
+    path.join(os.homedir(), 'Users/.noise-counter', 'noise-a.mp3')
+  );
   noiseA.volume = 1;
   noiseA.loop = true;
 
   const noiseB = new Audio(); // Doge
-  noiseB.src = 'file:///Users/mac/Developer/noise-counter/assets/noise-b.mp3';
+  noiseB.src = fileUrl(
+    path.join(os.homedir(), 'Users/.noise-counter', 'noise-b.mp3')
+  );
   noiseB.volume = 1;
   noiseB.loop = true;
 
   const noiseC = new Audio(); // Doge
-  noiseC.src = 'file:///Users/mac/Developer/noise-counter/assets/noise-c.mp3';
+  noiseC.src = fileUrl(
+    path.join(os.homedir(), 'Users/.noise-counter', 'noise-c.mp3')
+  );
   noiseC.volume = 1;
   noiseC.loop = true;
 
